@@ -1,8 +1,32 @@
 <html>
     <head>
         <title></title>
+        <script src="../script/login.js"></script>    
+        <link rel="stylesheet" type="text/css" href="../css/index.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../css/logincss" media="screen" />        
     </head>
     <body>
-        Bem vindo ao login
+        <header>
+            <a href="../index.html">Logo</a>
+            <ul>
+                <li><a href="">Cadastro</li></a> 
+                <li><a href="">Login</a> 
+            </ul>
+        </header>
+        <section class="form">
+            <h1 style="text-align: center;">Digite seu email: </h1>
+            <div>
+                <form>
+                    <label for="lname">Email</label>
+                    <input type="text" id="email" name="email" placeholder="email">    
+                    
+                    <label for="lname">Senha</label>
+                    <input type="text" id="senha" name="senha" placeholder="senha">   
+
+                    <input type="button" value="Submit" onclick="loginUsuario()">
+            </div>
+            
+        </section>
+        
     </body>
 </html>
