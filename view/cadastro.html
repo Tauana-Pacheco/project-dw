@@ -20,17 +20,26 @@
                     <label for="name">Nome completo</label>
                     <input type="text" id="name" name="name" placeholder="Nome completo..">
                 
-                    <label for="lname">CPF / CNPJ</label>
+                    <label for="name">CPF / CNPJ</label>
                     <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="Cpf ou Cnpj">
 
-                    <label for="lname">Email</label>
+                    <label for="name">Email</label>
                     <input type="text" id="email" name="email" placeholder="Email">
-                
-                    <label for="user_type">Concoda com os termos</label>
-                    <select id="user_type" name="user_type">
-                      <option value="1">Sim</option>
-                      <option value="0">Não</option>                      
-                    </select>                  
+
+                    <label for="name">Password</label>
+                    <input type="text" id="password" name="password" placeholder="Password">
+
+                    <label for="name">Data</label>
+                    <input type="date" id="birthday" name="birthday" placeholder="Birthday">
+
+                    <div class="terms">
+                        <label for="user_type">Concoda com os termos</label>
+                        <select id="user_type" name="user_type">
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>                      
+                          </select>
+                    </div>
+
                     <input type="button" value="Submit" onclick="cadastroUsuario()">
             </div>
             

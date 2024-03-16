@@ -7,12 +7,12 @@ async function cadastroUsuario(){
         body:JSON.stringify(
             {
                 "name":name.value,
-                "email":"carlos@gmail.com",
+                "email":email.value,
                 "user_type_id":1,
-                "password": "123456",
-                "cpf_cnpj": "62418247406",
-                "terms": 1,
-                "birthday":"2000-10-12"    
+                "password": password.value,
+                "cpf_cnpj": cpf_cnpj.value,
+                "terms": user_type.value,
+                "birthday": birthday.value    
             }
         ),
         headers:{
