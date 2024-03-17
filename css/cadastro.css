@@ -8,8 +8,7 @@ body{
     grid-template-columns: 1fr ;
     margin: 0 auto;
     max-width: 500px;        
-    grid-gap: 20px;  
-        
+    grid-gap: 20px;      
 }
 
 input[type=text], select {
