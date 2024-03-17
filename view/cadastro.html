@@ -1,7 +1,6 @@
 <html>
     <head>
-        <title></title>
-        <script src="../script/cadastro.js"></script>    
+        <title>Cadastro</title>
         <link rel="stylesheet" type="text/css" href="../css/index.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../css/cadastro.css" media="screen" />        
     </head>
@@ -16,34 +15,48 @@
         <section class="form">
             <h1 style="text-align: center;">Faça o seu cadastro</h1>
             <div>
-                <form>
-                    <label for="name">Nome completo</label>
-                    <input type="text" id="name" name="name" placeholder="Nome completo..">
+                <form id="form"> 
+                    <div>
+                        <label for="name">Nome completo</label>
+                        <input type="text" id="name" name="name" placeholder="Nome completo.." class="inputs required" oninput="nameValidate()">
+                        <span class="span-required"> Nome deve ter no mínimo 3 caracteres </span>
+                    </div>
                 
-                    <label for="name">CPF / CNPJ</label>
-                    <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="Cpf ou Cnpj">
+                    <div>
+                        <label for="name">CPF / CNPJ</label>
+                        <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="Cpf ou Cnpj" class="inputs required" oninput="validateCpfCnpj()">
+                        <span class="span-required"> CPF inválido </span>
+                    </div>
 
-                    <label for="name">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Email">
+                    <div>
+                        <label for="name">Email</label>
+                        <input type="text" id="email" name="email" placeholder="Email" class="inputs required" oninput="emailValidate()">
+                        <span class="span-required"> Email inválido </span>
+                    </div>
 
-                    <label for="name">Password</label>
-                    <input type="text" id="password" name="password" placeholder="Password">
+                    <div>
+                        <label for="name">Password</label>
+                        <input type="text" id="password" name="password" placeholder="Password" class="inputs required" oninput="passwordValidate()">
+                        <span class="span-required"> Senha deve ter no mínimo 8 caracteres </span>
+                    </div>
 
-                    <label for="name">Data</label>
-                    <input type="date" id="birthday" name="birthday" placeholder="Birthday">
+                    <div>
+                        <label for="name">Data</label>
+                        <input type="date" id="birthday" name="birthday" placeholder="Birthday" class="inputs required">
+                    </div>
 
                     <div class="terms">
-                        <label for="user_type">Concoda com os termos</label>
+                        <label for="user_type">Concorda com os termos</label>
                         <select id="user_type" name="user_type">
                             <option value="1">Sim</option>
                             <option value="0">Não</option>                      
                           </select>
                     </div>
 
-                    <input type="button" value="Submit" onclick="cadastroUsuario()">
+                    <input type="button" value="Submit" onclick="cadastroUsuario()" >
             </div>
-            
         </section>
-        
+        <script src="../script/cadastro.js"></script>   
     </body>
+
 </html>
