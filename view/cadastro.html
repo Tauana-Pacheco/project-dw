@@ -1,40 +1,33 @@
-<html>
-    <head>
-        <title></title>
-        <script src="../script/cadastro.js"></script>    
-        <link rel="stylesheet" type="text/css" href="../css/index.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="../css/cadastro.css" media="screen" />        
-    </head>
-    <body>
-        <header>
-            <a href="../index.html">Logo</a>
-            <ul>
-                <li><a href="">Cadastro</li></a> 
-                <li>Login</li>
-            </ul>
-        </header>
-        <section class="form">
-            <h1 style="text-align: center;">Faça o seu cadastro</h1>
-            <div>
-                <form>
-                    <label for="name">Nome completo</label>
-                    <input type="text" id="name" name="name" placeholder="Nome completo..">
-                
-                    <label for="lname">CPF / CNPJ</label>
-                    <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="Cpf ou Cnpj">
-
-                    <label for="lname">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Email">
-                
-                    <label for="user_type">Concoda com os termos</label>
-                    <select id="user_type" name="user_type">
-                      <option value="1">Sim</option>
-                      <option value="0">Não</option>                      
-                    </select>                  
-                    <input type="button" value="Submit" onclick="cadastroUsuario()">
-            </div>
-            
-        </section>
-        
-    </body>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <script src="../script/cadastro.js"></script>
+    <script src="../script/mascaras.js"></script>
+    <title>Cadastro</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="../index.html"><img class="logo" src="../img/logo.png" alt=""></a>
+      </header>
+      <main>
+        <h4 class="h4"><img src="../img/log-in.png" alt=""> Faça o seu cadastro</h4>
+    <form action="" class="form" name="form">
+      Nome: <input class="input" type="text" id="name" name="name" placeholder="Digite seu nome">
+      Email: <input class="input" type="email" id="email" name="email" placeholder="email@mail.com.br">
+      Senha: <input class="input" type="password" id="password" name="password" placeholder="Digite sua senha">
+      CPF ou CNPJ: <input class="input" onkeypress='mascaraMutuario(this,cpfCnpj)' maxlength="17" type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="Digite seu CPF ou CNPJ">
+      Data de Nascimento: <input class="input" type="text" id="birthday" name="birthday" placeholder="01/01/1990">
+      Aceitar termos: <input class="checkbox" type="checkbox" name="checkbox">
+      <button type="button" class="button1" onclick="cadastroUsuario(); validarCampos()">Cadastrar</button>
+      <!-- <input type="button" class="button1" value="Cadastrar" onclick="cadastroUsuario()"> -->
+    </form>
+    </main>
+    <aside><img class="image-home" src="../img/side-image.jpg" alt=""></aside>
+    <footer></footer>
+  </div>
+  </body>
 </html>
