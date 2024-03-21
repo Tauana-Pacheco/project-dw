@@ -1,37 +1,105 @@
-body{
-    background-color: white;
-    color: black;
+body {
+    background-color: #1E1E1E;
+    margin: 0px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10vh 70vh 20vh;
+    grid-gap: 10px;
+}
+
+header {
+    background-color: #1E1E1E;
+    grid-column: 1/3;
+    margin-right: 50%;
+}
+
+main {
+    background-color: #1E1E1E;
+}
+
+aside {
+    margin-top: -20%;
+}
+
+.image-home {
+    height: 120%;
+    width: 100%;
+}
+
+.logo {
+    margin-left: 10%;
+    margin-top: 5%;
+    width: 10%;
+    height: 20%;
 }
 
 .form {
-    display: grid;
-    grid-template-columns: 1fr ;
-    margin: 0 auto;
-    max-width: 500px;        
-    grid-gap: 20px;  
-        
+    margin-top: -8%;
+    margin-left: 28%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 140px;
+    background-color: #24221F;
+    width: 50%;
+    height: 50%;
+    border-radius: 5%;
+    font-size: 20px;
+    color: #A9AFB9;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-
-input[type=text], select {
-    width: 100%;
+.input {
+    width: 90%;
     padding: 12px 20px;
-    margin: 8px 0;    
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    
-}
-  
-input[type=button] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    font-size: 16px;
 }
-  
 
-  
+.input:focus {
+    border: 5px solid #FFC632;
+    border-color: #FFC632;
+    border-radius: 3px;
+    outline: none;
+}
+
+.checkbox {
+    margin-left: 1%;
+}
+
+.button1 {
+    margin-right: 30%;
+    margin-top: 5%;
+    background-color: #FFC632;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+}
+
+.button1:hover {
+    background-color: #D4CCB6;
+}
+
+.button1:active {
+    background-color: #FFC632;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.button-link {
+    text-decoration: none;
+    color: #473404;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.h4 {
+    padding: 10% 30%;
+    color: #D4CCB6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+}
