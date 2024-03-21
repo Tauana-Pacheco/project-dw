@@ -24,19 +24,21 @@ async function cadastroUsuario(){
     });
 
     let data = await resposta.json();
-    
-    
-    if(data.data.statusCode == 422 && data.data.errors.cpf_cnpj){
-        alert(data.data.errors.cpf_cnpj[0]);
-    } else if(data.data.statusCode == 422 && data.data.errors.birthday){
-        alert(data.data.errors.birthday[0]);
-    } else if(data.data.statusCode == 422 && data.data.errors.email){
-        alert(data.data.errors.email[0]);
-    } else if((data.data.includes("Enviamos um link de ativação de conta"))){
-        alert(data.data)
-        window.location.href = "login.html";
-    }
 
+    if (data.data || data.data.statusCode ==! 200) {
+        if(data.data.errors && data.data.errors?.cpf_cnpj) {
+            return alert(data.data.errors.cpf_cnpj[0]);
+        }
+         if(data.data.errors && data.data.errors?.birthday) {
+            return alert(data.data.errors.birthday[0]);
+        }
+        if(data.data.errors && data.data.errors?.email) {
+            return alert(data.data.errors.email[0]);
+        }
+        if(!data.data.errors) {
+            window.location.href = "login.html"
+        }
+    }
 }
 
 function setError(index){
