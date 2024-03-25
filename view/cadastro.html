@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="../css/cadastro.css">
     <script src="../script/cadastro.js"></script>
     <script src="../script/mascaras.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/imask"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+      var birthday = document.getElementById('birthday');
+      
+      var mascaraData = IMask(birthday, {
+        mask: '00/00/0000'
+      });
+    });</script>
     <title>Cadastro</title>
   </head>
   <body>
@@ -22,7 +30,7 @@
       CPF ou CNPJ: <input class="input" onkeypress='mascaraMutuario(this,cpfCnpj)' maxlength="17" type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="Digite seu CPF ou CNPJ">
       Data de Nascimento: <input class="input" type="text" id="birthday" name="birthday" placeholder="01/01/1990">
       Aceitar termos: <input class="checkbox" type="checkbox" name="checkbox">
-      <button type="button" class="button1" onclick="cadastroUsuario(); validarCampos()">Cadastrar</button>
+      <button type="button" class="button1" onclick="validarCampos(); cadastroUsuario()">Cadastrar</button>
       <!-- <input type="button" class="button1" value="Cadastrar" onclick="cadastroUsuario()"> -->
     </form>
     </main>
