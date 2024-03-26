@@ -55,6 +55,10 @@ function fieldValidation() {
     alert("Inserir o nome");
     nome.focus();
     return false;
+  } else if (nome.value.length <3) {
+    alert('Insira o nome completo')
+    nome.focus();
+    return false;
   }
 
   if (email.value == "") {
@@ -72,6 +76,10 @@ function fieldValidation() {
   if (password.value == "") {
     alert("Inserir a senha");
     password.focus();
+  } else if (password.value.length < 6) {
+    alert('Senha com no mínimo 6 caracteres')
+    nome.focus();
+    return false;
   }
 
   if (cpf_cnpj.value == "") {
