@@ -1,97 +1,71 @@
-body {
-  background-color: #1E1E1E;
-  margin: 0;
-}
+ body {
+   background-color: #1E1E1E;
+   margin: 0px;
+ }
 
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 10vh auto auto 20vh;
-  grid-gap: 10px;
-}
+ main {
+   display: flex;
+   justify-content: space-between;
+ }
 
-header {
-  background-color: #1E1E1E;
-  grid-column: 1;
-}
+ .logo {
+   margin-top: 40px;
+   margin-left: 40px;
+ }
 
-main {
-  background-color: #1E1E1E;
-}
+ section {
+   display: flex;
+   flex-direction: column;
+   background-color: #24221F;
+   border-radius: 5px;
+   width: 572px;
+   height: 512px;
+   margin-top: 250px;
+   margin-left: 74px;
+   margin-right: 174px;
+   align-items: center;
+   gap: 10px;
+ }
 
-.image-home {
-  width: 100%;
-  height: auto; /* Isso permite que a imagem mantenha sua proporção original */
-}
+ .image-home {
+   width: 50%;
+   height: auto;
+ }
 
-.logo {
-  margin: 5% auto;
-  width: 30%;
-  max-width: 200px; /* Define um tamanho máximo para a logo */
-}
 
-.ul {
-  margin: 5% auto;
-  background-color: #24221F;
-  width: 80%;
-  max-width: 400px; /* Define um tamanho máximo para a lista */
-}
+ .ul {
+   margin: 0;
+   list-style: none;
+ }
 
-.li {
-  list-style: none;
-  text-align: center; /* Centraliza o texto na lista */
-}
 
-.button1,
-.button2 {
-  margin: 5% auto;
-  background-color: #FFC632;
-  width: 80%;
-  max-width: 200px; /* Define um tamanho máximo para os botões */
-  height: 50px;
-  font-size: 20px;
-  text-align: center;
-  border: none;
-}
+ .li {
+   margin: 0;
+   background-color: rebeccapurple;
+ }
 
-.button-link {
-  text-decoration: none;
-  color: #473404;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
-/* Media query para dispositivos maiores que 600px */
-@media (min-width: 600px) {
-  .container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 10vh 70vh 20vh;
-  }
 
-  header {
-    grid-column: 1 / span 2;
-  }
+ .button1 {
+   margin-top: 200px;
+   background-color: #FFC632;
+   width: 334px;
+   height: 51px;
+   font-size: 20px;
+   text-align: center;
+   border: none;
+ }
 
-  .image-home {
-    height: 120%;
-  }
+ .button2 {
+   margin-top: 0;
+   background-color: #FFC632;
+   width: 334px;
+   height: 51px;
+   font-size: 20px;
+   text-align: center;
+   border: none;
+ }
 
-  .logo {
-    margin: 5% 10%;
-    width: 10%;
-    height: 20%;
-    max-width: none; /* Remove o limite máximo para telas maiores */
-  }
-
-  .ul {
-    margin: 28%;
-    width: 50%;
-    max-width: none; /* Remove o limite máximo para telas maiores */
-  }
-
-  .button1,
-  .button2 {
-    margin: 30% auto 10%;
-    width: 200px;
-    max-width: none; /* Remove o limite máximo para telas maiores */
-  }
-}
+ button:hover {
+   background-color: #dfac2c;
+ }
