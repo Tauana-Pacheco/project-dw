@@ -30,7 +30,7 @@ footer {
   margin-left: 10%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   justify-content: center;
 }
