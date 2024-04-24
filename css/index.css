@@ -3,91 +3,69 @@
    margin: 0px;
  }
 
- header {
-   margin-left: 40px;
-   margin-top: 40px;
+ main {
    display: flex;
+   justify-content: space-between;
+ }
+
+ .logo {
+   margin-top: 40px;
+   margin-left: 40px;
+ }
+
+ section {
+   display: flex;
+   flex-direction: column;
+   background-color: #24221F;
+   border-radius: 5px;
+   width: 572px;
+   height: 512px;
+   margin-top: 250px;
+   margin-left: 74px;
+   margin-right: 174px;
+   align-items: center;
+   gap: 10px;
  }
 
  .image-home {
-   position: absolute;
-   right: 0;
-   top: 0;
    width: 50%;
    height: auto;
  }
 
- /*
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 10vh 70vh 20vh;
-  grid-gap: 10px;
-  background-color: red;
-}
 
-header {
-  background-color: #1E1E1E;
-  grid-column: 1/4;
-  margin-right: 50%;
-}
+ .ul {
+   margin: 0;
+   list-style: none;
+ }
 
-main {
-  background-color: #1E1E1E;
-}
 
-aside {
-  margin-top: -20%;
-}
+ .li {
+   margin: 0;
+   background-color: rebeccapurple;
+ }
 
-.image-home {
-  height: 100%;
-  width: 100%;
-}
 
-.logo {
-  margin-left: 10%;
-  margin-top: 5%;
-  width: 10%;
-  height: 20%;
-}
 
-.ul {
-  margin: 28%;
-  background-color: #24221F;
-  width: 50%;
-  height: 50%;
-  border-radius: 5%;
-  background-color: red;
-}
+ .button1 {
+   margin-top: 200px;
+   background-color: #FFC632;
+   width: 334px;
+   height: 51px;
+   font-size: 20px;
+   text-align: center;
+   border: none;
+ }
 
-.li {
-  list-style: none;
-  margin-left: 25%;
-}
+ .button2 {
+   margin-top: 0;
+   background-color: #FFC632;
+   width: 334px;
+   height: 51px;
+   font-size: 20px;
+   text-align: center;
+   border: none;
+ }
 
-.button1 {
-  margin-top: 30%;
-  background-color: #FFC632;
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  text-align: center;
-  border: none;
-}
-
-.button2 {
-  margin-top: 10%;
-  background-color: #FFC632;
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  text-align: center;
-  border: none;
-}
-
-.button-link {
-  text-decoration: none;
-  color: #473404;
-  font-family: Arial, Helvetica, sans-serif;
-} */
+ button:hover {
+   background-color: #dfac2c;
+ }
