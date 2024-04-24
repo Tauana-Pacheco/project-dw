@@ -1,71 +1,60 @@
- body {
-   background-color: #1E1E1E;
-   margin: 0px;
- }
+body {
+  margin: 0;
+  background-color: #1E1E1E;
+}
 
- main {
-   display: flex;
-   justify-content: space-between;
- }
+header {
+  width: 115px;
+  height: 28px;
+  margin-top: 40px;
+  margin-left: 40px;
+}
 
- .logo {
-   margin-top: 40px;
-   margin-left: 40px;
- }
+main {
+  display: flex;
+  justify-content: space-between;
+}
 
- section {
-   display: flex;
-   flex-direction: column;
-   background-color: #24221F;
-   border-radius: 5px;
-   width: 572px;
-   height: 512px;
-   margin-top: 250px;
-   margin-left: 74px;
-   margin-right: 174px;
-   align-items: center;
-   gap: 10px;
- }
+section {
+  display: flex;
+  min-height: 800px;
+  width: 100%;
+  align-items: center;
+}
 
- .image-home {
-   width: 50%;
-   height: auto;
- }
+footer {
+  background-color: #24221F;
+  border-radius: 5px;
+  width: 572px;
+  height: 512px;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+footer button {
+  width: 334px;
+  height: 51px;
+
+  border: none;
+  border-radius: 5px;
+  background-color: #FFC632;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600px;
+  color: #473404;
+}
 
 
- .ul {
-   margin: 0;
-   list-style: none;
- }
 
-
- .li {
-   margin: 0;
-   background-color: rebeccapurple;
- }
-
-
-
- .button1 {
-   margin-top: 200px;
-   background-color: #FFC632;
-   width: 334px;
-   height: 51px;
-   font-size: 20px;
-   text-align: center;
-   border: none;
- }
-
- .button2 {
-   margin-top: 0;
-   background-color: #FFC632;
-   width: 334px;
-   height: 51px;
-   font-size: 20px;
-   text-align: center;
-   border: none;
- }
-
- button:hover {
-   background-color: #dfac2c;
- }
+main img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+}
