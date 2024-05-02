@@ -1,4 +1,4 @@
-const url = "https://api-go-wash-efc9c9582687.herokuapp.com/api/user";
+const url = "https://go-wash-api.onrender.com/api/user";
 
 async function registerUser() {
   let name = document.getElementById("name").value;
