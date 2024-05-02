@@ -1,11 +1,11 @@
 const url = "https://api-go-wash-efc9c9582687.herokuapp.com/api/user";
 
 async function registerUser() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const cpf_cnpj = document.getElementById("cpf_cnpj").value;
-  const birthday = document.getElementById("birthday").value;
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  let cpf_cnpj = document.getElementById("cpf_cnpj").value;
+  let birthday = document.getElementById("birthday").value;
 
   let response = await fetch(url, {
     method: "POST",
@@ -41,12 +41,12 @@ async function registerUser() {
 }
 
 function fieldValidation() {
-  const nome = form.name;
-  const email = form.email;
-  const password = form.password;
-  const cpf_cnpj = form.cpf_cnpj;
-  const birthday = form.birthday;
-  const checkbox = form.checkbox;
+  let nome = form.name;
+  let email = form.email;
+  let password = form.password;
+  let cpf_cnpj = form.cpf_cnpj;
+  let birthday = form.birthday;
+  let checkbox = form.checkbox;
 
   const parts = birthday.value.split("/");
   const dateFormated = parts[2] + "-" + parts[1] + "-" + parts[0];
