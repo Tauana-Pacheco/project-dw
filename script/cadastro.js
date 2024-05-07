@@ -6,7 +6,7 @@ async function registerUser() {
   let password = document.getElementById("password").value;
   let cpf_cnpj = document.getElementById("cpf_cnpj").value;
   let birthday = document.getElementById("birthday").value;
-  
+
   let response = await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -26,28 +26,27 @@ async function registerUser() {
   const errors = data.data.errors;
 
   for (const field in errors) {
-      switch (field) {
-          case "name":
-              alert(`Error for 'name': ${errors[field][0]}`);
-              break;
-          case "password":
-              alert(`Error for 'password': ${errors[field][0]}`);
-              break;
-          case "email":
-              alert(`Error for 'email': ${errors[field][0]}`);
-              break;
-          case "cpf_cnpj":
-              alert(`Error for 'cpf_cnpj': ${errors[field][0]}`);
-              break;
-          case "birthday":
-              alert(`Error for 'birthday': ${errors[field][0]}`);
-              break;
-          default:
-              alert(`Unknown error for field '${field}'`);
-              break;
-      }
+    switch (field) {
+      case "name":
+        alert(`Error for 'name': ${errors[field][0]}`);
+        break;
+      case "password":
+        alert(`Error for 'password': ${errors[field][0]}`);
+        break;
+      case "email":
+        alert(`Error for 'email': ${errors[field][0]}`);
+        break;
+      case "cpf_cnpj":
+        alert(`Error for 'cpf_cnpj': ${errors[field][0]}`);
+        break;
+      case "birthday":
+        alert(`Error for 'birthday': ${errors[field][0]}`);
+        break;
+      default:
+        alert(`Unknown error for field '${field}'`);
+        break;
+    }
   }
-
 }
 
 function fieldValidation() {
@@ -61,8 +60,8 @@ function fieldValidation() {
     alert("Inserir o nome");
     nome.focus();
     return false;
-  } else if (nome.value.length <3) {
-    alert('Insira o nome completo')
+  } else if (nome.value.length < 3) {
+    alert("Insira o nome completo");
     nome.focus();
     return false;
   }
@@ -83,7 +82,7 @@ function fieldValidation() {
     alert("Inserir a senha");
     password.focus();
   } else if (password.value.length < 6) {
-    alert('Senha com no mínimo 6 caracteres')
+    alert("Senha com no mínimo 6 caracteres");
     nome.focus();
     return false;
   }
@@ -101,4 +100,10 @@ function fieldValidation() {
   }
 
   return true;
+}
+
+function handleRegister() {
+  fieldValidation();
+  registerUser();
+  // redirect
 }
