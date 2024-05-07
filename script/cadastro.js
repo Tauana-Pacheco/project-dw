@@ -6,7 +6,7 @@ async function registerUser() {
   let password = document.getElementById("password").value;
   let cpf_cnpj = document.getElementById("cpf_cnpj").value;
   let birthday = document.getElementById("birthday").value;
-
+  
   let response = await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -23,21 +23,31 @@ async function registerUser() {
 
   let data = await response.json();
 
-  if (data.data || data.data.statusCode == !200) {
-    if (data.data.errors && data.data.errors?.cpf_cnpj) {
-      return alert(data.data.errors.cpf_cnpj[0]);
-    }
-    if (data.data.errors && data.data.errors?.birthday) {
-      return alert(data.data.errors.birthday[0]);
-    }
-    if (data.data.errors && data.data.errors?.email) {
-      return alert(data.data.errors.email[0]);
-    }
-    if (!data.data.errors) {
-      window.location.href = "login.html";
-    }
+  const errors = data.data.errors;
+
+  for (const field in errors) {
+      switch (field) {
+          case "name":
+              alert(`Error for 'name': ${errors[field][0]}`);
+              break;
+          case "password":
+              alert(`Error for 'password': ${errors[field][0]}`);
+              break;
+          case "email":
+              alert(`Error for 'email': ${errors[field][0]}`);
+              break;
+          case "cpf_cnpj":
+              alert(`Error for 'cpf_cnpj': ${errors[field][0]}`);
+              break;
+          case "birthday":
+              alert(`Error for 'birthday': ${errors[field][0]}`);
+              break;
+          default:
+              alert(`Unknown error for field '${field}'`);
+              break;
+      }
   }
-  console.log("Cadastro realizado com sucesso");
+
 }
 
 function fieldValidation() {
@@ -45,11 +55,7 @@ function fieldValidation() {
   let email = form.email;
   let password = form.password;
   let cpf_cnpj = form.cpf_cnpj;
-  let birthday = form.birthday;
   let checkbox = form.checkbox;
-
-  const parts = birthday.value.split("/");
-  const dateFormated = parts[2] + "-" + parts[1] + "-" + parts[0];
 
   if (nome.value == "") {
     alert("Inserir o nome");
@@ -85,17 +91,6 @@ function fieldValidation() {
   if (cpf_cnpj.value == "") {
     alert("Inserir o CPF ou CNPJ");
     cpf_cnpj.focus();
-  }
-
-  if (birthday.value == "") {
-    alert("Inserir o Data de nascimento");
-    birthday.focus();
-  } else {
-    const regexData = /^\d{2}\/\d{2}\/\d{4}$/;
-    if (regexData.test(dateFormated)) {
-      alert("Insira a data nesse formato 16/01/1990");
-      return false;
-    }
   }
 
   if (checkbox.checked) {
