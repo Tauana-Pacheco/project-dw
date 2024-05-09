@@ -2,12 +2,18 @@ const url = "https://go-wash-api.onrender.com/api/user";
 
 async function registerUser() {
   try {
+    let registerButton = document.getElementById("registerButton");
+
+    if (!fieldValidation()) {
+      registerButton.disabled = false;
+      return false;
+    }
+
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let cpf_cnpj = document.getElementById("cpf_cnpj").value;
     let birthday = document.getElementById("birthday").value;
-    let registerButton = document.getElementById("registerButton");
 
     registerButton.disabled = true;
 
@@ -86,6 +92,7 @@ function fieldValidation() {
   if (cpf_cnpj.value == "") {
     alert("Inserir o CPF ou CNPJ");
     cpf_cnpj.focus();
+    return false;
   }
 
   if (checkbox.checked) {
@@ -93,22 +100,22 @@ function fieldValidation() {
   } else {
     alert("Aceitar os termos de uso");
     checkbox.focus();
+    return false;
   }
 
   return true;
 }
 
 async function handleRegister() {
-  if (fieldValidation()) {
-    try {
-      let registrationSuccessful = await registerUser();
-      if (registrationSuccessful) {
-        window.location.href = "login.html";
-      } else {
-        console.log("O registro falhou");
-      }
-    } catch (error) {
-      console.error("Erro durante o registro:", error);
+  try {
+    let registrationSuccessful = await registerUser();
+    if (registrationSuccessful) {
+      alert("Registro realizado com sucesso! Acesse seu e-mail e ative o seu cadastro pelo link enviado!");
+      window.location.href = "login.html";
+    } else {
+      console.log("O registro falhou");
     }
+  } catch (error) {
+    alert("Erro durante o registro:", error);
   }
 }
