@@ -6,7 +6,7 @@ async function accessEmail() {
     let password = document.getElementById("password").value;
     let user_type_id = 1
     
-    let loginButton = document.getElementById("registerButton");
+    let loginButton = document.getElementById("loginButton");
     loginButton.disabled = true;
 
     let response = await fetch(url, {
@@ -22,6 +22,10 @@ async function accessEmail() {
     let data = await response.json();
 
     if (!response.ok) {
+      if (data && data.data && data.data.errors === "Usuário não esta ativo") {
+        alert("Erro de login: Usuário não está ativo");
+        return false
+      } 
       const errors = data.data.errors;
       for (const field in errors) {
         alert(`Erro para '${field}': ${errors[field][0]}`);
