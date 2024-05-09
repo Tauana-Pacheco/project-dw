@@ -1,51 +1,47 @@
 const url = "https://go-wash-api.onrender.com/api/user";
 
 async function registerUser() {
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
-  let cpf_cnpj = document.getElementById("cpf_cnpj").value;
-  let birthday = document.getElementById("birthday").value;
+  try {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let cpf_cnpj = document.getElementById("cpf_cnpj").value;
+    let birthday = document.getElementById("birthday").value;
+    let registerButton = document.getElementById("registerButton");
 
-  let response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify({
-      name,
-      email,
-      user_type_id: 1,
-      password,
-      cpf_cnpj,
-      terms: 1,
-      birthday,
-    }),
-    headers: { "Content-Type": "application/json" },
-  });
+    registerButton.disabled = true;
 
-  let data = await response.json();
+    let response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        email,
+        user_type_id: 1,
+        password,
+        cpf_cnpj,
+        terms: 1,
+        birthday,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
 
-  const errors = data.data.errors;
+    let data = await response.json();
 
-  for (const field in errors) {
-    switch (field) {
-      case "name":
-        alert(`Error for 'name': ${errors[field][0]}`);
-        break;
-      case "password":
-        alert(`Error for 'password': ${errors[field][0]}`);
-        break;
-      case "email":
-        alert(`Error for 'email': ${errors[field][0]}`);
-        break;
-      case "cpf_cnpj":
-        alert(`Error for 'cpf_cnpj': ${errors[field][0]}`);
-        break;
-      case "birthday":
-        alert(`Error for 'birthday': ${errors[field][0]}`);
-        break;
-      default:
-        alert(`Unknown error for field '${field}'`);
-        break;
+    if (!response.ok) {
+      const errors = data.data.errors;
+      for (const field in errors) {
+        alert(`Erro para '${field}': ${errors[field][0]}`);
+      }
+      registerButton.disabled = false;
+      return false;
     }
+
+    return true;
+  } catch (error) {
+    console.error("Erro durante o registro:", error);
+    registerButton.disabled = false;
+    return false;
+    
   }
 }
 
@@ -60,8 +56,8 @@ function fieldValidation() {
     alert("Inserir o nome");
     nome.focus();
     return false;
-  } else if (nome.value.length < 3) {
-    alert("Insira o nome completo");
+  } else if (nome.value.length <3) {
+    alert('Insira o nome completo')
     nome.focus();
     return false;
   }
@@ -82,7 +78,7 @@ function fieldValidation() {
     alert("Inserir a senha");
     password.focus();
   } else if (password.value.length < 6) {
-    alert("Senha com no mínimo 6 caracteres");
+    alert('Senha com no mínimo 6 caracteres')
     nome.focus();
     return false;
   }
@@ -102,8 +98,17 @@ function fieldValidation() {
   return true;
 }
 
-function handleRegister() {
-  fieldValidation();
-  registerUser();
-  // redirect
+async function handleRegister() {
+  if (fieldValidation()) {
+    try {
+      let registrationSuccessful = await registerUser();
+      if (registrationSuccessful) {
+        window.location.href = "login.html";
+      } else {
+        console.log("O registro falhou");
+      }
+    } catch (error) {
+      console.error("Erro durante o registro:", error);
+    }
+  }
 }

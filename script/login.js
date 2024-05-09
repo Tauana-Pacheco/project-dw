@@ -1,20 +1,41 @@
 const url = "https://go-wash-api.onrender.com/api/login";
 
 async function accessEmail() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  try{
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let user_type_id = 1
+    
+    let loginButton = document.getElementById("registerButton");
+    loginButton.disabled = true;
 
-  let response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-    headers: { "Content-Type": "application/json" },
-  });
+    let response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+        user_type_id
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
 
-  let data = await response.json();
-  console.log(data, "tratar erros");
+    let data = await response.json();
+
+    if (!response.ok) {
+      const errors = data.data.errors;
+      for (const field in errors) {
+        alert(`Erro para '${field}': ${errors[field][0]}`);
+      }
+      loginButton.disabled = false
+      return false; 
+    }
+    return true;
+  }catch (error) {
+    console.error("Erro durante o login:", error);
+    loginButton.disabled = false
+    return false;
+  }
+
 }
 
 function fieldValidation() {
@@ -43,7 +64,17 @@ function fieldValidation() {
   }
 }
 
-function handleLogin() {
-  fieldValidation();
-  accessEmail();
+async function handleLogin() {
+  if (accessEmail()) {
+    try {
+      let loginSuccessful = await accessEmail();
+      if (loginSuccessful) {
+        window.location.href = "home.html";
+      } else {
+        console.log("O login falhou");
+      }
+    } catch (error) {
+      console.error("Erro durante o login:", error);
+    }
+  }
 }
