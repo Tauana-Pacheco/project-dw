@@ -1,55 +1,62 @@
-const url = "https://api-go-wash-efc9c9582687.herokuapp.com/api/user";
+const url = "https://go-wash-api.onrender.com/api/user";
 
 async function registerUser() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const cpf_cnpj = document.getElementById("cpf_cnpj").value;
-  const birthday = document.getElementById("birthday").value;
+  try {
+    let registerButton = document.getElementById("registerButton");
 
-  let response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify({
-      name,
-      email,
-      user_type_id: 1,
-      password,
-      cpf_cnpj,
-      terms: 1,
-      birthday,
-    }),
-    headers: { "Content-Type": "application/json" },
-  });
+    if (!fieldValidation()) {
+      registerButton.disabled = false;
+      return false;
+    }
 
-  let data = await response.json();
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let cpf_cnpj = document.getElementById("cpf_cnpj").value;
+    let birthday = document.getElementById("birthday").value;
 
-  if (data.data || data.data.statusCode == !200) {
-    if (data.data.errors && data.data.errors?.cpf_cnpj) {
-      return alert(data.data.errors.cpf_cnpj[0]);
+    registerButton.disabled = true;
+
+    let response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        email,
+        user_type_id: 1,
+        password,
+        cpf_cnpj,
+        terms: 1,
+        birthday,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    let data = await response.json();
+
+    if (!response.ok) {
+      const errors = data.data.errors;
+      for (const field in errors) {
+        alert(`Erro para '${field}': ${errors[field][0]}`);
+      }
+      registerButton.disabled = false;
+      return false;
     }
-    if (data.data.errors && data.data.errors?.birthday) {
-      return alert(data.data.errors.birthday[0]);
-    }
-    if (data.data.errors && data.data.errors?.email) {
-      return alert(data.data.errors.email[0]);
-    }
-    if (!data.data.errors) {
-      window.location.href = "login.html";
-    }
+
+    return true;
+  } catch (error) {
+    console.error("Erro durante o registro:", error);
+    registerButton.disabled = false;
+    return false;
+    
   }
-  console.log("Cadastro realizado com sucesso");
 }
 
 function fieldValidation() {
-  const nome = form.name;
-  const email = form.email;
-  const password = form.password;
-  const cpf_cnpj = form.cpf_cnpj;
-  const birthday = form.birthday;
-  const checkbox = form.checkbox;
-
-  const parts = birthday.value.split("/");
-  const dateFormated = parts[2] + "-" + parts[1] + "-" + parts[0];
+  let nome = form.name;
+  let email = form.email;
+  let password = form.password;
+  let cpf_cnpj = form.cpf_cnpj;
+  let checkbox = form.checkbox;
 
   if (nome.value == "") {
     alert("Inserir o nome");
@@ -85,17 +92,7 @@ function fieldValidation() {
   if (cpf_cnpj.value == "") {
     alert("Inserir o CPF ou CNPJ");
     cpf_cnpj.focus();
-  }
-
-  if (birthday.value == "") {
-    alert("Inserir o Data de nascimento");
-    birthday.focus();
-  } else {
-    const regexData = /^\d{2}\/\d{2}\/\d{4}$/;
-    if (regexData.test(dateFormated)) {
-      alert("Insira a data nesse formato 16/01/1990");
-      return false;
-    }
+    return false;
   }
 
   if (checkbox.checked) {
@@ -103,7 +100,22 @@ function fieldValidation() {
   } else {
     alert("Aceitar os termos de uso");
     checkbox.focus();
+    return false;
   }
 
   return true;
+}
+
+async function handleRegister() {
+  try {
+    let registrationSuccessful = await registerUser();
+    if (registrationSuccessful) {
+      alert("Registro realizado com sucesso! Acesse seu e-mail e ative o seu cadastro pelo link enviado!");
+      window.location.href = "login.html";
+    } else {
+      console.log("O registro falhou");
+    }
+  } catch (error) {
+    alert("Erro durante o registro:", error);
+  }
 }
