@@ -17,6 +17,9 @@ async function accessEmail(email, password) {
   })
 
   let data = await response.json();
+  
+  localStorage.setItem("user", JSON.stringify(data));
+
   const dataError = data && data.data && data.data.errors
   if (!response.ok) {
     if (dataError === "Usuário não esta ativo") {
