@@ -31,12 +31,25 @@ async function registerUser() {
       headers: { "Content-Type": "application/json" },
     });
 
-    let data = await response.json();
-
     if (!response.ok) {
-      const errors = data.data.errors;
-      for (const field in errors) {
-        alert(`Erro para '${field}': ${errors[field][0]}`);
+      if (response.status === 400) {
+        // Bad Request - Validation errors
+        const data = await response.json();
+        const errors = data.data.errors;
+        for (const field in errors) {
+          alert(`Erro para '${field}': ${errors[field][0]}`);
+        }
+      } else if (response.status === 401) {
+        // Unauthorized
+        alert("Você não está autorizado a acessar este recurso.");
+      } else if (response.status === 404) {
+        // Not Found
+        alert("A API não encontrou o recurso solicitado.");
+      } else {
+        // Other errors
+        alert(
+          "Ocorreu um erro durante o registro. Por favor, tente novamente mais tarde."
+        );
       }
       registerButton.disabled = false;
       return false;
@@ -47,7 +60,6 @@ async function registerUser() {
     console.error("Erro durante o registro:", error);
     registerButton.disabled = false;
     return false;
-    
   }
 }
 
@@ -62,8 +74,8 @@ function fieldValidation() {
     alert("Inserir o nome");
     nome.focus();
     return false;
-  } else if (nome.value.length <3) {
-    alert('Insira o nome completo')
+  } else if (nome.value.length < 3) {
+    alert("Insira o nome completo");
     nome.focus();
     return false;
   }
@@ -84,7 +96,7 @@ function fieldValidation() {
     alert("Inserir a senha");
     password.focus();
   } else if (password.value.length < 6) {
-    alert('Senha com no mínimo 6 caracteres')
+    alert("Senha com no mínimo 6 caracteres");
     nome.focus();
     return false;
   }
@@ -95,9 +107,7 @@ function fieldValidation() {
     return false;
   }
 
-  if (checkbox.checked) {
-    console.log("termos aceito");
-  } else {
+  if (checkbox.checked === false) {
     alert("Aceitar os termos de uso");
     checkbox.focus();
     return false;
@@ -110,12 +120,14 @@ async function handleRegister() {
   try {
     let registrationSuccessful = await registerUser();
     if (registrationSuccessful) {
-      alert("Registro realizado com sucesso! Acesse seu e-mail e ative o seu cadastro pelo link enviado!");
+      alert(
+        "Registro realizado com sucesso! Acesse seu e-mail e ative o seu cadastro pelo link enviado!"
+      );
       window.location.href = "login.html";
-    } else {
-      console.log("O registro falhou");
     }
   } catch (error) {
-    alert("Erro durante o registro:", error);
+    const e = new Error(alert("Erro durante o registro: ", error.message));
+    throw e;
+    // n tenho ctz se isso aqui funfa
   }
 }
