@@ -67,20 +67,24 @@ async function registerAddress() {
 
       if (!response.ok) {
         
-        const errors = data.data.errors;
-        for (const field in errors) {
-          alert(`Erro para '${field}': ${errors[field][0]}`);
-        }
-        registerAddress.disabled = false;
-        return false;
+        if (data && data.errors) {
+          for (const field in data.errors) {
+              alert(`Erro para '${field}': ${data.errors[field][0]}`);
+          }
+      } else {
+          alert("Erro desconhecido");
       }
-  
-      return true;
-    } catch (error) {
-      console.error("Erro durante o registro:", error);
       registerAddress.disabled = false;
-      return false; 
-    }
+      return false;
+  }
+
+  return true;
+} catch (error) {
+  console.error("Erro durante o registro:", error);
+  alert("Erro durante o registro. Por favor, tente novamente mais tarde.");
+  registerAddress.disabled = false;
+  return false;
+}
   }
 
 async function handleRegister() {
