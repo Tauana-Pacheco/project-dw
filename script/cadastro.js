@@ -33,20 +33,16 @@ async function registerUser() {
 
     if (!response.ok) {
       if (response.status === 400) {
-        // Bad Request - Validation errors
         const data = await response.json();
         const errors = data.data.errors;
         for (const field in errors) {
           alert(`Erro para '${field}': ${errors[field][0]}`);
         }
       } else if (response.status === 401) {
-        // Unauthorized
         alert("Você não está autorizado a acessar este recurso.");
       } else if (response.status === 404) {
-        // Not Found
         alert("A API não encontrou o recurso solicitado.");
       } else {
-        // Other errors
         alert(
           "Ocorreu um erro durante o registro. Por favor, tente novamente mais tarde."
         );
