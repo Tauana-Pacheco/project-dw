@@ -48,7 +48,7 @@ async function registerUser() {
 
     return true;
   } catch (error) {
-    console.error("Erro durante o registro:", error);
+    alert("Erro durante o registro", error);
     registerButton.disabled = false;
     return false;
   }
@@ -118,14 +118,12 @@ async function handleRegister() {
   try {
     let registrationSuccessful = await registerUser();
     if (registrationSuccessful) {
-      alert(
-        "Registro realizado com sucesso! Acesse seu e-mail e ative o seu cadastro pelo link enviado!"
-      );
+      alert("Registro realizado com sucesso! Acesse seu e-mail e ative o seu cadastro pelo link enviado!");
       window.location.href = "login.html";
+    } else {
+      console.log("O registro falhou");
     }
   } catch (error) {
-    const e = new Error(alert("Erro durante o registro: ", error.message));
-    throw e;
-    // n tenho ctz se isso aqui funfa
+    alert("Erro durante o registro:", error);
   }
 }
