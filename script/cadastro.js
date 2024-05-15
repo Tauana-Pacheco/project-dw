@@ -31,21 +31,16 @@ async function registerUser() {
       headers: { "Content-Type": "application/json" },
     });
 
-    if (!response.ok) {
-      if (response.status === 400) {
-        const data = await response.json();
-        const errors = data.data.errors;
-        for (const field in errors) {
-          alert(`Erro para '${field}': ${errors[field][0]}`);
-        }
-      } else if (response.status === 401) {
-        alert("Você não está autorizado a acessar este recurso.");
-      } else if (response.status === 404) {
-        alert("A API não encontrou o recurso solicitado.");
-      } else {
-        alert(
-          "Ocorreu um erro durante o registro. Por favor, tente novamente mais tarde."
-        );
+    const data = await response.json();
+    const dataString = JSON.stringify(data) 
+    if(dataString.includes('cpf_cnpj invalid')){
+      alert('Erro: cpf_cnpj invalid');
+      registerButton.disabled = false;
+      return false;
+    }else if (!response.ok) {
+      const errors = data.data.errors;
+      for (const field in errors) {
+        alert(`Erro para '${field}': ${errors[field][0]}`);
       }
       registerButton.disabled = false;
       return false;
@@ -65,6 +60,7 @@ function fieldValidation() {
   let password = form.password;
   let cpf_cnpj = form.cpf_cnpj;
   let checkbox = form.checkbox;
+  let date = form.birthday
 
   if (nome.value == "") {
     alert("Inserir o nome");
@@ -100,6 +96,12 @@ function fieldValidation() {
   if (cpf_cnpj.value == "") {
     alert("Inserir o CPF ou CNPJ");
     cpf_cnpj.focus();
+    return false;
+  }
+
+  if (date.value == "") {
+    alert("Inserir Data no formato ANO/MES/DIA");
+    date.focus();
     return false;
   }
 
