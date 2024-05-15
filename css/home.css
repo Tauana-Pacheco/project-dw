@@ -8,45 +8,57 @@ header{
     margin-top: 40px;
     margin-left: 40px;
 }
-h2{
+
+main {
     display: flex;
-    min-height: 800px;
-    width: 100%;
-    align-items: center;
+    justify-content: space-between;
 }
-section {
-    display: flex;
-    min-height: 800px;
-    width: 100%;
-    align-items: center;
-  }
+
+
 footer {
     background-color: #24221F;
     border-radius: 5px;
     width: 572px;
     height: 512px;
-    margin-left: 10%;
+    margin-left: 30%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
     align-items: center;
     justify-content: center;
 }
-footer button {
+
+section {
+    display: flex;
+    min-height: 800px;
+    width: 100%;
+    align-items: center;
+}
+
+
+.titulo {
     width: 334px;
-    height: 51px;
-  
-    border: none;
-    border-radius: 5px;
-    background-color: #FFC632;
-  
-    font-family: "Poppins", sans-serif;
-    font-size: 18px;
-    font-weight: 600px;
-    color: #473404;
-} 
+    height: 64px;
+    margin-top: 55px;
+    margin-left: 119px;
+}
+
+h4 {
+    margin: 0;
+    color: #D4CCB6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+
+.img {
+    position: static;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: 10%;
+}
+
 main img {
-    position: absolute;
+    position: static;
     top: 0;
     right: 0;
     width: 50%;
