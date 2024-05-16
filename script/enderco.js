@@ -15,6 +15,7 @@ function fieldValidation() {
   if (cep.value == "") {
     alert("Inserir o CEP");
     cep.focus();
+    return false;
   } else if (cep.value.length < 8) {
       alert('CEP com  8 caracteres')
       cep.focus();
@@ -38,55 +39,55 @@ function fieldValidation() {
 } 
 
 async function registerAddress() {
-    try {
-      let title = document.getElementById("title").value;
-      let cep = document.getElementById("cep").value;
-      let address = document.getElementById("address").value;
-      let number = document.getElementById("number").value;
-      let complement = document.getElementById("complement").value;
-      let registerAddress = document.getElementById("registerAddress");
+
+  const registerAddress = document.getElementById("registerAddress");
+  try {
+    let title = document.getElementById("title").value;
+    let cep = document.getElementById("cep").value;
+    let address = document.getElementById("address").value;
+    let number = document.getElementById("number").value;
+    let complement = document.getElementById("complement").value;
+  
+    registerAddress.disabled = true;
+
+    let token = JSON.parse(localStorage.getItem("user")).access_token;
+    let response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        title,
+        cep,
+        address,
+        number,
+        complement,
+      }),
+      headers: { "Content-Type": "application/json",
+        "Authorization": "bearer "+token
+        },
+    });
+    
+    let data = await response.json();
+
+    if (!response.ok) {
       
-      registerAddress.disabled = true;
-
-      let token = JSON.parse(localStorage.getItem("user")).access_token;
-      let response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-          title,
-          cep,
-          address,
-          number,
-          complement,
-        }),
-        headers: { "Content-Type": "application/json",
-          "Authorization": "bearer "+token
-         },
-      });
-     
-      let data = await response.json();
-
-      if (!response.ok) {
-        
-        if (data && data.errors) {
-          for (const field in data.errors) {
-              alert(`Erro para '${field}': ${data.errors[field][0]}`);
-          } 
-      } else {
-          alert("Erro desconhecido");
-      }
-      registerAddress.disabled = false;
-      return false;
+      if (data && data.errors) {
+        for (const field in data.errors) {
+            alert(`Erro para '${field}': ${data.errors[field][0]}`);
+        }
+    } else {
+        alert("Erro desconhecido");
+    }
+    registerAddress.disabled = false;
+    return false;
+    }
+    
+  return true;
+  } catch (error) {
+    console.error("Erro durante o registro:", error);
+    alert("Erro durante o registro. Por favor, tente novamente mais tarde.");
+    registerAddress.disabled = false;
+    return false;
   }
-
-
-} catch (error) {
-  console.error("Erro durante o registro:", error);
-  alert("Erro durante o registro. Por favor, tente novamente mais tarde.");
-  registerAddress.disabled = false;
-  return false;
 }
-return true;
-  }
 
 async function handleRegister() {
   if (fieldValidation()) {
@@ -97,6 +98,7 @@ async function handleRegister() {
       window.location.href = "home.html";
       } else {
         console.log("O registro falhou");
+        registerAddress.disabled = false;
         }
       } catch (error) {
         console.error("Erro durante o registro:", error);
