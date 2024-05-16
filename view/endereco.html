@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/cadastro.css" />
+    <script src="../script/enderco.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/imask"></script>
+    <title>Endereco - Camp.in</title>
+  </head>
+  <body>
+    <header>
+      <a href="../index.html">
+        <img src="../img/logo.png" alt="logo cabana camping" />
+      </a>
+    </header>
+
+    <main>
+      <section>
+        <footer>
+          <div class="titulo">
+            <h4 class="h4">
+              <img src="../img/log-in.png" alt="" /> Cadastre seu endereço
+            </h4>
+          </div>
+          <form action="" class="form" name="form">
+            <fieldset>
+              <div class="input-wrapper">
+                <label for="title">Minha Casa:</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="Digite se é sua residência"
+                />
+              </div>
+              <div class="input-wrapper">
+                <label for="cep">Cep:</label>
+                <input
+                  class="input"
+                  type="text"
+                  maxlength="8"
+                  id="cep"
+                  name="cep"
+                  placeholder="03730000"
+                />
+              </div>
+              <div class="input-wrapper">
+                <label for="address">Rua:</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Rua Pio Xll (Centro)"
+                />
+              </div>
+              <div class="input-wrapper">
+                <label for="number">Número:</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="number"
+                  name="number"
+                  placeholder="84"
+                />
+              </div>
+              <div class="input-wrapper">
+                <label for="complement">Complemento</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="complement"
+                  name="complement"
+                  placeholder="Casa 2"
+                />
+              </div>
+              <div class="button-wrapper">
+                <button
+                  type="button"
+                  class="button1"
+                  id="registerAddress"
+                  onclick="handleRegister()"
+                >
+                  Cadastrar
+                </button>
+              </div>
+              <div class="h3-wrapper">
+              <lia><a href="./login.html">Retorne ao Login</lia></a>
+              </div>
+            </fieldset>
+          </form>
+        </footer>
+      </section>
+      <img class="img" src="../img/side-image.jpg" alt="" />
+    </main>
+  </body>
+</html>

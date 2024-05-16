@@ -31,9 +31,13 @@ async function registerUser() {
       headers: { "Content-Type": "application/json" },
     });
 
-    let data = await response.json();
-
-    if (!response.ok) {
+    const data = await response.json();
+    const dataString = JSON.stringify(data) 
+    if(dataString.includes('cpf_cnpj invalid')){
+      alert('Erro: cpf_cnpj invalid');
+      registerButton.disabled = false;
+      return false;
+    }else if (!response.ok) {
       const errors = data.data.errors;
       for (const field in errors) {
         alert(`Erro para '${field}': ${errors[field][0]}`);
@@ -44,10 +48,9 @@ async function registerUser() {
 
     return true;
   } catch (error) {
-    console.error("Erro durante o registro:", error);
+    alert("Erro durante o registro", error);
     registerButton.disabled = false;
     return false;
-    
   }
 }
 
@@ -57,13 +60,14 @@ function fieldValidation() {
   let password = form.password;
   let cpf_cnpj = form.cpf_cnpj;
   let checkbox = form.checkbox;
+  let date = form.birthday
 
   if (nome.value == "") {
     alert("Inserir o nome");
     nome.focus();
     return false;
-  } else if (nome.value.length <3) {
-    alert('Insira o nome completo')
+  } else if (nome.value.length < 3) {
+    alert("Insira o nome completo");
     nome.focus();
     return false;
   }
@@ -84,7 +88,7 @@ function fieldValidation() {
     alert("Inserir a senha");
     password.focus();
   } else if (password.value.length < 6) {
-    alert('Senha com no mínimo 6 caracteres')
+    alert("Senha com no mínimo 6 caracteres");
     nome.focus();
     return false;
   }
@@ -95,9 +99,13 @@ function fieldValidation() {
     return false;
   }
 
-  if (checkbox.checked) {
-    console.log("termos aceito");
-  } else {
+  if (date.value == "") {
+    alert("Inserir Data no formato ANO/MES/DIA");
+    date.focus();
+    return false;
+  }
+
+  if (checkbox.checked === false) {
     alert("Aceitar os termos de uso");
     checkbox.focus();
     return false;
