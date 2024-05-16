@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/home.css">
+  <script src="../script/home.js"></script>
   <title>Camp.in</title>
 </head>
 <body>
@@ -17,23 +18,23 @@
   </header>
 
   <main>
-    <section>
-      <footer>
-        <div class="titulo"
-            <h4 class="h4">
-              <img src="../img/log-in.png" alt="" /> Seus endereços
-            </h4>
-              <table border="table">
-                <tr>
-                    <th>CEP</th>
-                    <th>Endereço</th>
-                    <th>Numero</th>
-                    <th>Complemento</th>
-                </tr>
+        <div class="titulo">
+            <h1 class="h1">
+              <img src="../img/log-in.png"  alt="" /> Seus endereços
+            </h1>
+        </div>
+              <table border id="tabela">
+                <thead>
+                  <tr>
+                    <td>Titulo</td>
+                    <td>Cep</td>
+                    <td>Endereço</td>
+                    <td>Numero</td>
+                    <td>Complemento</td>
+                  </tr>
+                </thead>
+                <tbody id="corpo-tabela">  
+                </tbody>
               </table>
-        
-      </footer>
-    </section>
-  </main>
-</body>
-</html>
+          </main>
+                
