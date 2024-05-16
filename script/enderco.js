@@ -70,7 +70,7 @@ async function registerAddress() {
         if (data && data.errors) {
           for (const field in data.errors) {
               alert(`Erro para '${field}': ${data.errors[field][0]}`);
-          }
+          } 
       } else {
           alert("Erro desconhecido");
       }
@@ -78,13 +78,14 @@ async function registerAddress() {
       return false;
   }
 
-  return true;
+
 } catch (error) {
   console.error("Erro durante o registro:", error);
   alert("Erro durante o registro. Por favor, tente novamente mais tarde.");
   registerAddress.disabled = false;
   return false;
 }
+return true;
   }
 
 async function handleRegister() {
