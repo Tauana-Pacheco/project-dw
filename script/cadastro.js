@@ -32,12 +32,12 @@ async function registerUser() {
     });
 
     const data = await response.json();
-    const dataString = JSON.stringify(data) 
-    if(dataString.includes('cpf_cnpj invalid')){
-      alert('Erro: cpf_cnpj invalid');
+    const dataString = JSON.stringify(data);
+    if (dataString.includes("cpf_cnpj invalid")) {
+      alert("Erro: cpf_cnpj invalid");
       registerButton.disabled = false;
       return false;
-    }else if (!response.ok) {
+    } else if (!response.ok) {
       const errors = data.data.errors;
       for (const field in errors) {
         alert(`Erro para '${field}': ${errors[field][0]}`);
@@ -60,7 +60,7 @@ function fieldValidation() {
   let password = form.password;
   let cpf_cnpj = form.cpf_cnpj;
   let checkbox = form.checkbox;
-  let date = form.birthday
+  let date = form.birthday;
 
   if (nome.value == "") {
     alert("Inserir o nome");
@@ -118,10 +118,10 @@ async function handleRegister() {
   try {
     let registrationSuccessful = await registerUser();
     if (registrationSuccessful) {
-      alert("Registro realizado com sucesso! Acesse seu e-mail e ative o seu cadastro pelo link enviado!");
+      alert(
+        "Registro realizado com sucesso! Acesse seu e-mail e ative o seu cadastro pelo link enviado!"
+      );
       window.location.href = "login.html";
-    } else {
-      console.log("O registro falhou");
     }
   } catch (error) {
     alert("Erro durante o registro:", error);

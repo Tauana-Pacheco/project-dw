@@ -38,7 +38,6 @@ function fieldValidation() {
 }
 
 async function registerAddress() {
-
   const registerAddress = document.getElementById("registerAddress");
   try {
     let title = document.getElementById("title").value;
@@ -46,7 +45,7 @@ async function registerAddress() {
     let address = document.getElementById("address").value;
     let number = document.getElementById("number").value;
     let complement = document.getElementById("complement").value;
-  
+
     registerAddress.disabled = true;
 
     let token = JSON.parse(localStorage.getItem("user")).access_token;
@@ -59,27 +58,27 @@ async function registerAddress() {
         number,
         complement,
       }),
-      headers: { "Content-Type": "application/json",
-        "Authorization": "bearer "+token
-        },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "bearer " + token,
+      },
     });
-    
+
     let data = await response.json();
 
     if (!response.ok) {
-      
       if (data && data.errors) {
         for (const field in data.errors) {
-            alert(`Erro para '${field}': ${data.errors[field][0]}`);
+          alert(`Erro para '${field}': ${data.errors[field][0]}`);
         }
-    } else {
+      } else {
         alert("Erro desconhecido");
+      }
+      registerAddress.disabled = false;
+      return false;
     }
-    registerAddress.disabled = false;
-    return false;
-    }
-    
-  return true;
+
+    return true;
   } catch (error) {
     console.error("Erro durante o registro:", error);
     alert("Erro durante o registro. Por favor, tente novamente mais tarde.");
@@ -92,16 +91,14 @@ async function handleRegister() {
   if (fieldValidation()) {
     try {
       let registrationSuccessful = await registerAddress();
-      console.log(registrationSuccessful, "let");
       if (registrationSuccessful) {
         alert("Cadastro concluido");
         window.location.href = "home.html";
       } else {
-        console.log("O registro falhou");
         registerAddress.disabled = false;
-        }
-      } catch (error) {
-        console.error("Erro durante o registro:", error);
-        }
+      }
+    } catch (error) {
+      console.error("Erro durante o registro:", error);
+    }
   }
 }
