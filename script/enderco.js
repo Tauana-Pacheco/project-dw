@@ -1,11 +1,11 @@
 const url = "https://go-wash-api.onrender.com/api/auth/address";
 
 function fieldValidation() {
-  let title = form.title
-  let cep = form.cep
-  let address = form.address
-  let number = form.number
-  
+  let title = form.title;
+  let cep = form.cep;
+  let address = form.address;
+  let number = form.number;
+
   if (title.value == "") {
     alert("Inserir o título");
     title.focus();
@@ -17,9 +17,9 @@ function fieldValidation() {
     cep.focus();
     return false;
   } else if (cep.value.length < 8) {
-      alert('CEP com  8 caracteres')
-      cep.focus();
-      return false;
+    alert("CEP com  8 caracteres");
+    cep.focus();
+    return false;
   }
 
   if (address.value == "") {
@@ -35,8 +35,7 @@ function fieldValidation() {
   }
 
   return true;
-
-} 
+}
 
 async function registerAddress() {
 
@@ -92,10 +91,11 @@ async function registerAddress() {
 async function handleRegister() {
   if (fieldValidation()) {
     try {
-      let registrationSuccessful = await registerAddress(); 
+      let registrationSuccessful = await registerAddress();
+      console.log(registrationSuccessful, "let");
       if (registrationSuccessful) {
-      alert('Cadastro concluido')
-      window.location.href = "home.html";
+        alert("Cadastro concluido");
+        window.location.href = "home.html";
       } else {
         console.log("O registro falhou");
         registerAddress.disabled = false;
@@ -105,4 +105,3 @@ async function handleRegister() {
         }
   }
 }
- 
