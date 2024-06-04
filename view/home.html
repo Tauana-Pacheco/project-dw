@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/home.css">
   <script src="../script/home.js"></script>
+  <script src="../script/weatherapi.js"></script>
   <title>Camp.in</title>
 </head>
 <body>
@@ -23,6 +24,11 @@
               <img src="../img/log-in.png"  alt="" /> Seus endereços
             </h1>
         </div>
+        <div>
+          Localização: <span id="localizacao"></span>
+          Temperatura: <span id="temperatura"></span>
+        </div>
+    
               <table border id="tabela">
                 <thead>
                   <tr>
@@ -31,6 +37,7 @@
                     <td>Endereço</td>
                     <td>Numero</td>
                     <td>Complemento</td>
+                    <td>Ação</td>
                   </tr>
                 </thead>
                 <tbody id="corpo-tabela">  

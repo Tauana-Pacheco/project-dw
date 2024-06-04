@@ -8,8 +8,7 @@ async function listAddresses() {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token,
-                "Content-Type": "application/json",
-                "Cookie": "gowash_session=0hGqRHf0q38ETNgEcJGce30LcPtuPKo48uKtb7Oj"
+                "Content-Type": "application/json"
             },
         });
 
@@ -20,7 +19,7 @@ async function listAddresses() {
         if (response.hasOwnProperty('data')) {
             response.data.forEach(item => {
                 const row = document.createElement("tr");
-                let dadosApi = ['title', 'cep', 'address', 'number', 'complement']
+                let dadosApi = ['title', 'cep', 'address', 'number', 'complement', 'botao']
                 dadosApi.forEach(key => {
                     const cell = document.createElement("td");
                     cell.textContent = item[key] || ''; 
